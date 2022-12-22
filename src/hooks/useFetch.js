@@ -6,7 +6,7 @@ const useFetch = (url) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const base_url = process.env.NODE_ENV === "development" ? "http://localhost:3333/" : "https://bookapi-solid.onrender.com/"
+  const base_url = process.env.NODE_ENV === "development" ? "http://localhost:3333/" : "https://bookapi-solid.onrender.com//"
 
   useEffect(() => {
     const fetchData = async () => {
