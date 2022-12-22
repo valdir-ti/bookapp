@@ -4,7 +4,8 @@ import "./featured.css";
 
 const Featured = () => {
   const { data, loading, error } = useFetch(
-    "hotels/countByCityName/?cities=london,rome,berlim"
+    process.env.NODE_ENV === "development" ? "http://localhost:3333/hotels/countByCityName/?cities=london,rome,berlim"
+    : "https://bookapi-solid.onrender.comhotels/countByCityName/?cities=london,rome,berlim"
   );
 
   return (
