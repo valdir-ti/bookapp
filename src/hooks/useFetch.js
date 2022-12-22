@@ -21,7 +21,7 @@ const useFetch = (url) => {
       setLoading(false);
     };
     fetchData();
-  }, [url]);
+  }, [url, base_url]);
 
   const reFetch = async () => {
     setLoading(true);
