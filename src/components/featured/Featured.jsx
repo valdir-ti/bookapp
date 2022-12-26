@@ -1,9 +1,9 @@
-import { useFetchHotels } from "../../hooks/useFetch";
+import { useFetch } from "../../hooks/useFetch";
 
 import "./featured.css";
 
 const Featured = () => {
-  const { dataHotels, loading } = useFetchHotels();
+  const { data, loading } = useFetch("hotels/countByCityName/?cities=london,rome");
 
   return (
     <div className="featured">
@@ -15,7 +15,7 @@ const Featured = () => {
         />
         <div className="featuredTitles">
           <h1>London</h1>
-          <h2>{dataHotels[0]} properties</h2>
+          <h2>{data[0]} properties</h2>
         </div>
       </div>
 
@@ -27,7 +27,7 @@ const Featured = () => {
         />
         <div className="featuredTitles">
           <h1>Rome</h1>
-          <h2>{dataHotels[1]} properties</h2>
+          <h2>{data[1]} properties</h2>
         </div>
       </div>
       <div className="featuredItem">
@@ -38,7 +38,7 @@ const Featured = () => {
         />
         <div className="featuredTitles">
           <h1>Berlim</h1>
-          <h2>{dataHotels[2]} properties</h2>
+          <h2>{data[2]} properties</h2>
         </div>
       </div></>}
     </div>
