@@ -14,6 +14,11 @@ const List = () => {
   const [openDate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(location.state.options);
 
+  useEffect(() => {
+    setDestination("X")
+    setOptions({})
+  }, []);
+
   return (
     <div>
       <Navbar />
