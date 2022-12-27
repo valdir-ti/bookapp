@@ -6,13 +6,16 @@ const useFetch = (url) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const base_url = process.env.NODE_ENV === "development" ? "http://localhost:3333" : "https://bookapi-solid.onrender.com"
+  const base_url =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3333"
+      : "https://bookapi-solid.onrender.com";
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`${base_url}/${url}`, { mode: 'cors'});
+        const res = await axios.get(`${base_url}/${url}`, { mode: "cors" });
         setData(res.data);
       } catch (err) {
         console.log(err);
@@ -21,15 +24,13 @@ const useFetch = (url) => {
       setLoading(false);
     };
 
-      fetchData();
-
-  }, [url, base_url]);
-
+    fetchData();
+  }, [base_url, url]);
 
   const reFetch = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(url);
+      const res = await axios.get(`${base_url}/${url}`, { mode: "cors" });
       setData(res.data);
     } catch (err) {
       setError(err);
