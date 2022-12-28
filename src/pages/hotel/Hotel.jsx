@@ -26,7 +26,7 @@ const Hotel = () => {
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   const dayDifference = (date1, date2) => {
-    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    const timeDiff = Math.abs(date2?.getTime() - date1?.getTime());
     const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
     return diffDays;
   };
@@ -111,24 +111,26 @@ const Hotel = () => {
                   </div>
                 ))}
               </div>
-              <div className="hotelDetails">
-                <div className="hotelDetailsTexts">
-                  <h1 className="hotelTitle">{data.title}</h1>
-                  <p className="hotelDesc">{data.description}</p>
+              {!isNaN(dateDiff) && (
+                <div className="hotelDetails">
+                  <div className="hotelDetailsTexts">
+                    <h1 className="hotelTitle">{data.title}</h1>
+                    <p className="hotelDesc">{data.description}</p>
+                  </div>
+                  <div className="hotelDetailsPrice">
+                    <h1>Perfect for a {dateDiff}-night stay!</h1>
+                    <span>
+                      Located in the real heart of Krakow, this property has an
+                      excellent location score of 9.8!
+                    </span>
+                    <h2>
+                      <b>${dateDiff * data.cheapestPrice * options.room}</b> (
+                      {dateDiff} night{dateDiff > 1 ? "s" : ""})
+                    </h2>
+                    <button>Reserve or Book Now!</button>
+                  </div>
                 </div>
-                <div className="hotelDetailsPrice">
-                  <h1>Perfect for a {dateDiff}-night stay!</h1>
-                  <span>
-                    Located in the real heart of Krakow, this property has an
-                    excellent location score of 9.8!
-                  </span>
-                  <h2>
-                    <b>${dateDiff * data.cheapestPrice * options.room}</b> (
-                    {dateDiff} night{dateDiff > 1 ? "s" : ""})
-                  </h2>
-                  <button>Reserve or Book Now!</button>
-                </div>
-              </div>
+              )}
             </>
           )}
         </div>
