@@ -3,10 +3,11 @@ import "./list.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
+import { SearchContext } from "../../context/SearchContext";
 
 const List = () => {
   const location = useLocation();
@@ -21,9 +22,11 @@ const List = () => {
     `hotels?city=${city}&min=${min || 0}&max=${max || 9999}`
   );
 
+  const { dispatch } = useContext(SearchContext);
+
   const handleClick = () => {
     reFetch();
-    setOptions(location.state.options);
+    dispatch({ type: "NEW_SEARCH", payload: { city, dates, options } });
   };
 
   return (
@@ -88,6 +91,12 @@ const List = () => {
                     min={1}
                     className="lsOptionInput"
                     placeholder={options.adult}
+                    onChange={(e) =>
+                      setOptions((prev) => ({
+                        ...prev,
+                        adult: e.target.value,
+                      }))
+                    }
                   />
                 </div>
                 <div className="lsOptionItem">
@@ -97,6 +106,12 @@ const List = () => {
                     min={0}
                     className="lsOptionInput"
                     placeholder={options.children}
+                    onChange={(e) =>
+                      setOptions((prev) => ({
+                        ...prev,
+                        children: e.target.value,
+                      }))
+                    }
                   />
                 </div>
                 <div className="lsOptionItem">
@@ -106,6 +121,12 @@ const List = () => {
                     min={1}
                     className="lsOptionInput"
                     placeholder={options.room}
+                    onChange={(e) =>
+                      setOptions((prev) => ({
+                        ...prev,
+                        room: e.target.value,
+                      }))
+                    }
                   />
                 </div>
               </div>
