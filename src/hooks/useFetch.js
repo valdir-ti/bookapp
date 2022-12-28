@@ -25,6 +25,7 @@ const useFetch = (url) => {
     };
 
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const reFetch = async () => {
