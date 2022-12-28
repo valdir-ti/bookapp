@@ -10,7 +10,7 @@ import SearchItem from "../../components/searchItem/SearchItem";
 
 const List = () => {
   const location = useLocation();
-  const [destination, setDestination] = useState(location.state.destination);
+  const [city, setCity] = useState(location.state.city);
   const [dates, setDates] = useState(location.state.dates);
   const [openDate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(location.state.options);
@@ -18,7 +18,7 @@ const List = () => {
   const [min, setMin] = useState(undefined);
 
   const { data, loading, reFetch } = useFetch(
-    `hotels?city=${destination}&min=${min || 0}&max=${max || 9999}`
+    `hotels?city=${city}&min=${min || 0}&max=${max || 9999}`
   );
 
   const handleClick = () => {
@@ -37,10 +37,10 @@ const List = () => {
             <div className="lsItem">
               <label>Destination</label>
               <input
-                placeholder={destination}
+                placeholder={city}
                 type="text"
                 onChange={(e) => {
-                  setDestination(e.target.value);
+                  setCity(e.target.value);
                 }}
               />
             </div>
