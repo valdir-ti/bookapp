@@ -124,7 +124,7 @@ const Hotel = () => {
                   </span>
                   <h2>
                     <b>${dateDiff * data.cheapestPrice * options.room}</b> (
-                    {dateDiff} nights)
+                    {dateDiff} night{dateDiff > 1 ? "s" : ""})
                   </h2>
                   <button>Reserve or Book Now!</button>
                 </div>
