@@ -45,6 +45,8 @@ const List = () => {
                 onChange={(e) => {
                   setCity(e.target.value);
                 }}
+                value={city}
+                className="lsItemTitleText"
               />
             </div>
             <div className="lsItem">
@@ -72,6 +74,7 @@ const List = () => {
                     type="number"
                     className="lsOptionInput"
                     onChange={(e) => setMin(e.target.value)}
+                    value="0"
                   />
                 </div>
                 <div className="lsOptionItem">
@@ -82,6 +85,7 @@ const List = () => {
                     type="number"
                     className="lsOptionInput"
                     onChange={(e) => setMax(e.target.value)}
+                    value="0"
                   />
                 </div>
                 <div className="lsOptionItem">
@@ -91,6 +95,7 @@ const List = () => {
                     min={1}
                     className="lsOptionInput"
                     placeholder={options.adult}
+                    value={options.adult}
                     onChange={(e) =>
                       setOptions((prev) => ({
                         ...prev,
@@ -106,6 +111,7 @@ const List = () => {
                     min={0}
                     className="lsOptionInput"
                     placeholder={options.children}
+                    value={options.children}
                     onChange={(e) =>
                       setOptions((prev) => ({
                         ...prev,
@@ -121,6 +127,7 @@ const List = () => {
                     min={1}
                     className="lsOptionInput"
                     placeholder={options.room}
+                    value={options.room}
                     onChange={(e) =>
                       setOptions((prev) => ({
                         ...prev,
